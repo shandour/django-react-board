@@ -36,3 +36,8 @@ export const Label = styled.label`
 export const ButtonDiv = styled.div`
   text-align: center;
 `;
+
+export const ErrorDiv = styled.span`
+  color: red;
+  text-align: center;
+`;

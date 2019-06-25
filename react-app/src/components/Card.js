@@ -70,6 +70,7 @@ const TitleDiv = styled.div`
   font-weight: bold;
   padding: 5px;
   margin-bottom: 15px;
+  word-break: break-all;
 `;
 
 const DateFlexDiv = styled.div`

@@ -54,11 +54,13 @@ export default () => {
           card: resp.data
         }
       });
-      setPreselectedStatus(undefined);
+        setPreselectedStatus(undefined);
+        return true;
     } catch ({ response }) {
       if (response) {
         setErrors(response.data);
       }
+        return false;
     }
   };
 
@@ -95,10 +97,12 @@ export default () => {
           }
         });
       }
+        return true;
     } catch ({ response }) {
       if (response) {
         setErrors(response.data);
       }
+        return false;
     }
   };
 

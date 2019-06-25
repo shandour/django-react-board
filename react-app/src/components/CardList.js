@@ -43,12 +43,16 @@ export default ({ toggleModal, deleteCard, editCard }) => {
 
 const FlexDiv = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const FlexCol = styled.div`
   margin-left: 10px;
   margin-right: 10px;
   flex: 1;
+ @media only screen and (max-width: 768px) {
+  flex-basis: 100%;
+}
 `;
 
 const CenteringFlexDiv = styled.div`

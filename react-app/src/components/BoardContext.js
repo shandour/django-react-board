@@ -44,5 +44,3 @@ export const BoardContextProducer = ({ children }) => {
     <BoardContext.Provider value={initState}>{children}</BoardContext.Provider>
   );
 };
-
-// export const getBoardContextState = () => useContext(BoardContext);

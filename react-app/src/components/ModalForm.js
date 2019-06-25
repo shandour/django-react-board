@@ -9,7 +9,8 @@ import {
   Input,
   TextArea,
   Label,
-  ButtonDiv
+    ButtonDiv,
+    ErrorDiv
 } from "./FormComponents";
 
 export default ({
@@ -39,8 +40,8 @@ export default ({
         data.status = preselectedStatus;
       }
 
-      await submit(data, setErrors, initialStatus);
-      setTimeout(() => close());
+        const success = await submit(data, setErrors, initialStatus);
+        if (success) close();
     } finally {
       setLoading(false);
     }
@@ -58,9 +59,11 @@ export default ({
             type="text"
             onChange={e => setField("title", e.target.value)}
             value={data.title}
-            disabled={loading}
+      disabled={loading}
+      maxLength="200"
             required
           ></Input>
+          {errors.title && <ErrorDiv>{errors.title.join('. ')}</ErrorDiv>}
         </InputDiv>
 
         <Label htmlFor="text">Text</Label>
@@ -74,6 +77,7 @@ export default ({
             disabled={loading}
             required
           />
+          {errors.text && <ErrorDiv>{errors.text.join('. ')}</ErrorDiv>}
         </InputDiv>
 
         {!preselectedStatus && (
@@ -97,7 +101,9 @@ export default ({
                     {status[1]}
                   </option>
                 ))}
-              </select>
+            </select>
+                {errors.status && <ErrorDiv>{errors.status.join('. ')}</ErrorDiv>}
+
             </InputDiv>
           </>
         )}
@@ -106,7 +112,9 @@ export default ({
           <SubmitButton type="submit" disabled={loading}>
             Submit
           </SubmitButton>
-        </ButtonDiv>
+          </ButtonDiv>
+          {errors.nonFieldErrors && <ErrorDiv>{errors.nonFieldErrors.join('. ')}</ErrorDiv>}
+
       </FlexForm>
     </WrapperDiv>
   );

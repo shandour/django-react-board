@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import axios from "../axios";
 import { UserContext } from "../App";
-import { FlexForm, InputDiv, Input, Label, ButtonDiv } from "./FormComponents";
+import { FlexForm, InputDiv, Input, Label, ButtonDiv, ErrorDiv } from "./FormComponents";
 
 import { SubmitButton } from "./Buttons";
 
@@ -85,7 +85,7 @@ export default () => {
             />
           </InputDiv>
           {errors.username && (
-            <ErrorSpan> {errors.username.join(". ")} </ErrorSpan>
+            <ErrorDiv> {errors.username.join(". ")} </ErrorDiv>
           )}
           <Label htmlFor="password">Password</Label>
           <InputDiv>
@@ -98,7 +98,7 @@ export default () => {
             />
           </InputDiv>
           {errors.password && (
-            <ErrorSpan> {errors.password.join(". ")} </ErrorSpan>
+            <ErrorDiv> {errors.password.join(". ")} </ErrorDiv>
           )}
           <ButtonDiv>
             <SubmitButton type="submit" disabled={loading}>
@@ -106,8 +106,8 @@ export default () => {
             </SubmitButton>
           </ButtonDiv>
         </FlexForm>
-        {errors.nonFieldErrors && (
-          <ErrorSpan> {errors.nonFieldErrors.join(". ")} </ErrorSpan>
+        {errors.non_field_errors && (
+          <ErrorDiv> {errors.non_field_errors.join(". ")} </ErrorDiv>
         )}
       </div>
     </Wrapper>
@@ -122,10 +122,6 @@ const Wrapper = styled.div`
 
 const CenteredTitle = styled.h2`
   text-align: center;
-`;
-
-const ErrorSpan = styled.span`
-  color: red;
 `;
 
 const ToggleDiv = styled.div`
